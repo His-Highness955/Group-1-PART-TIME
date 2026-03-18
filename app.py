@@ -10,7 +10,7 @@ from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 # --- Page Config ---
-st.set_page_config(page_title="Group 5 Clinical Portal", layout="wide", page_icon="🧠")
+st.set_page_config(page_title="Group 1 part time Clinical Portal", layout="wide", page_icon="🧠")
 
 # --- Model Training/Loading Logic ---
 @st.cache_resource
@@ -29,7 +29,7 @@ def get_model_assets():
         df_train = df_train.drop(columns=['id'])
         
         encoders = {}
-        cat_cols = ['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status']
+        cat_cols = ['gender', 'work_type', 'Residence_type', 'smoking_status']
         for col in cat_cols:
             le = LabelEncoder()
             df_train[col] = le.fit_transform(df_train[col].astype(str))
@@ -71,7 +71,7 @@ def engineer_features(age, glucose, bmi_val):
     return age_grp, glu_grp, bmi_grp
 
 # --- Branding Header ---
-st.markdown("<div style='text-align: center;'><h1>🧠 Stroke Risk Clinical Portal</h1><h3>BOUESTI CIS STUDENT GROUP 5 PROJECT</h3><p>Research Supervisor: Mrs. T.O. Adefehinti</p></div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center;'><h1>🧠 Stroke&heart Risk Clinical Portal</h1><h3>BOUESTI CIS STUDENT GROUP 1 part time PROJECT</h3><p>Research Supervisor: Mrs. T.O. Adefehinti</p></div>", unsafe_allow_html=True)
 st.divider()
 
 # --- Main Tabs ---
@@ -105,7 +105,6 @@ with tab2:
         patient_name = st.text_input("Full Name")
         gender = st.selectbox("Gender", ["Male", "Female", "Other"])
         age = st.number_input("Age", 0, 120, 45)
-        married = st.selectbox("Ever Married?", ["Yes", "No"])
         residence = st.selectbox("Residence Type", ["Urban", "Rural"])
         
         st.header("🏥 Clinical Metrics")
@@ -133,7 +132,7 @@ with tab2:
             # 1. Prepare Input for SVM
             input_dict = {
                 'gender': gender, 'age': age, 'hypertension': hypertension, 
-                'heart_disease': heart_disease, 'ever_married': married,
+                'heart_disease': heart_disease, 
                 'work_type': work, 'Residence_type': residence,
                 'avg_glucose_level': glucose, 'bmi': bmi,
                 'smoking_status': smoke
