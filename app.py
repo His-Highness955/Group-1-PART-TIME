@@ -71,7 +71,7 @@ def engineer_features(age, glucose, bmi_val):
     return age_grp, glu_grp, bmi_grp
 
 # --- Branding Header ---
-st.markdown("<div style='text-align: center;'><h1>🧠 Stroke&heart Risk Clinical Portal</h1><h3>BOUESTI CIS STUDENT GROUP 1 part time PROJECT</h3></div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center;'><h1> Stroke&heart Risk Clinical Portal</h1><h3>BOUESTI CIS STUDENT GROUP 1 part time PROJECT</h3></div>", unsafe_allow_html=True)
 st.divider()
 
 # --- Main Tabs ---
@@ -94,7 +94,7 @@ with tab1:
         glucose = st.number_input("Avg Glucose Level", 50.0, 300.0, 95.0)
         bmi = st.number_input("BMI", 10.0, 60.0, 25.0)
         
-        st.header("🚬 Lifestyle & History")
+        st.header(" Lifestyle & History")
         work = st.selectbox("Work Type", ["Private", "Self-employed", "Govt_job", "children", "Never_worked"])
         smoke = st.selectbox("Smoking Status", ["never smoked", "formerly smoked", "smokes", "Unknown"])
         diabetes = st.checkbox("Known Diabetes")
@@ -102,7 +102,7 @@ with tab1:
         stress = st.checkbox("High Stress Levels")
 
     st.subheader("Run Diagnostic Analysis")
-    if st.button("🚀 Calculate Risk Profile"):
+    if st.button(" Calculate Risk Profile"):
         if not patient_name:
             st.error("Please provide a patient name.")
         elif assets is None:
