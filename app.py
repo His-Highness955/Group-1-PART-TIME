@@ -71,7 +71,7 @@ def engineer_features(age, glucose, bmi_val):
     return age_grp, glu_grp, bmi_grp
 
 # --- Branding Header ---
-st.markdown("<div style='text-align: center;'><h1>🧠 Stroke&heart Risk Clinical Portal</h1><h3>BOUESTI CIS STUDENT GROUP 1 part time PROJECT</h3><p>Research Supervisor: Mrs. T.O. ADEFEHINTI </p></div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center;'><h1>🧠 Stroke&heart Risk Clinical Portal</h1><h3>BOUESTI CIS STUDENT GROUP 1 part time PROJECT</h3></div>", unsafe_allow_html=True)
 st.divider()
 
 # --- Main Tabs ---
