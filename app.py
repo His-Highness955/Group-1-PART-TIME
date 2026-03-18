@@ -75,31 +75,10 @@ st.markdown("<div style='text-align: center;'><h1>🧠 Stroke&heart Risk Clinica
 st.divider()
 
 # --- Main Tabs ---
-tab1, tab2, tab3 = st.tabs(["📊 Data Dashboard", "🔍 Prediction Portal", "🗃️ Patient Records"])
+tab1, tab2, tab3 = st.tabs(["🔍 Prediction Portal", "📊 Data Dashboard", "🗃️ Patient Records"])
 
-# --- TAB 1: DATA DASHBOARD ---
+# --- TAB 1: PREDICTION PORTAL ---
 with tab1:
-    st.header("Dataset Overview")
-    if os.path.exists('healthcare-dataset-stroke-data.csv'):
-        df_view = pd.read_csv('healthcare-dataset-stroke-data.csv')
-        
-        col_a, col_b = st.columns(2)
-        with col_a:
-            st.write("### Stroke Distribution")
-            fig1, ax1 = plt.subplots()
-            sns.countplot(x='stroke', data=df_view, palette='viridis', ax=ax1)
-            st.pyplot(fig1)
-            
-        with col_b:
-            st.write("### Age vs BMI Analysis")
-            fig2, ax2 = plt.subplots()
-            sns.scatterplot(x='age', y='bmi', hue='stroke', data=df_view, alpha=0.5, ax=ax2)
-            st.pyplot(fig2)
-    else:
-        st.warning("CSV data file not found for dashboard view.")
-
-# --- TAB 2: PREDICTION PORTAL ---
-with tab2:
     with st.sidebar:
         st.header("👤 Patient Demographics")
         patient_name = st.text_input("Full Name")
@@ -170,6 +149,28 @@ with tab2:
             
             save_patient_data(patient_name, input_df, "Stroke", round(final_score, 2), risk_lvl)
             st.success(f"Risk analysis for {patient_name} has been saved to records.")
+
+# --- TAB 2: DATA DASHBOARD ---
+with tab2:
+    st.header("Dataset Overview")
+    if os.path.exists('healthcare-dataset-stroke-data.csv'):
+        df_view = pd.read_csv('healthcare-dataset-stroke-data.csv')
+        
+        col_a, col_b = st.columns(2)
+        with col_a:
+            st.write("### Stroke Distribution")
+            fig1, ax1 = plt.subplots()
+            sns.countplot(x='stroke', data=df_view, palette='viridis', ax=ax1)
+            st.pyplot(fig1)
+            
+        with col_b:
+            st.write("### Age vs BMI Analysis")
+            fig2, ax2 = plt.subplots()
+            sns.scatterplot(x='age', y='bmi', hue='stroke', data=df_view, alpha=0.5, ax=ax2)
+            st.pyplot(fig2)
+    else:
+        st.warning("CSV data file not found for dashboard view.")
+
 
 # --- TAB 3: PATIENT RECORDS ---
 with tab3:
